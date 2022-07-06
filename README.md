@@ -1,7 +1,7 @@
 Sign Language Detection <!-- omit in toc -->
 ===
-**Author:** *Thomas A. Deponte*  
-**Date:** *14 june 2022*
+**Author:** *Azad Sadr* *Lorenzo Taroni* *Thomas Axel Deponte*  
+**Date:** *6 july 2022*
 
 &ensp;   
 
