@@ -1,60 +1,38 @@
-Sign Language Detection <!-- omit in toc -->
-===
-**Author:** *Azad Sadr* *Lorenzo Taroni* *Thomas Axel Deponte*  
+# Sign Language Detection
+
+**Author:** *Azad Sadr*, *Lorenzo Taroni*, *Thomas Axel Deponte*  
 **Date:** *6 july 2022*
 
-&ensp;   
+
 
 **Table of contents**  
-- [titolo](#titolo)
-  - [sottotitolo 1](#sottotitolo-1)
-- [Conclusioni](#conclusioni)
+- [Problem Statement](#Problem Statement)
+- [Data][#Data]
+- [Methodology][#Methodology]
+- [Conclusion](#conclusion)
 - [References](#references)
 
-&ensp;  
-
-
-## titolo
-***
-### sottotitolo 1
 
 
 
-  > *... in cui dette.* [<sup>[1]</sup>](#1) 
- 
-   [<sup>[2]</sup>](#2)
+## Problem Statement
 
-## Conclusioni
-just some text...  
+Communication is an important part of our lives. Deaf and dumb people being unable to speak and listen, experience a lot of problems while communicating with normal people. There are many ways by which people with these disabilities try to communicate. One of the most prominent ways is the use of sign language, i.e. hand gestures. It is necessary to develop an application for recognizing gestures and actions of sign language so that deaf and dumb people can communicate easily with even those who don’t understand sign language. The objective of this work is to take an elementary step in breaking the barrier in communication between the normal people and deaf and dumb people with the help of sign language.
 
-```mermaid
-graph TD;
-    subgraph Claim 1;
-        A(A)-->|di| B(B);
+American Sign Language (ASL) is a complete, natural language that has the same linguistic properties as spoken languages, with grammar that differs from English. ASL is expressed by movements of the hands and face. It is the primary language of many North Americans who are deaf and hard of hearing, and is used by many hearing people as well.
 
-        subgraph graph;
-            B --> |towards| C(C);
-            C --> |having| D(D);
-            D --> |so| E(E);
-            E --> |indeed| F(F);
-        end
+## Data
 
-        A --> |in which| G(G label);
-        G --> |havings| H(H label);
+data are from kaggle website include, 27000 images with $28 \times 18$ resolution in `csv` format.
 
+## Methodology
 
-    end
-```
+Here, we are trying to develop a deep learning model to recognize the hand gestures and map them to the english letter.
+
+* Convolutional Neural Network
+* Bayesian Convolutional Neural Network
+
+## Conclusion
 
 ## References
-<a id="1">[1]</a> 
-ref. 
-No.
-
-<a id="2">[2]</a> 
-Thomas A. Deponte, 1/12/2021. 
-Analisi Rapporto ... 
-
-<a id="3">[3]</a> 
-Author. 
-date.
+<a id="1">https://www.kaggle.com/code/sanikamal/sign-language-detection/notebook</a> 
