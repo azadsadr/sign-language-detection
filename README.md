@@ -6,9 +6,9 @@
 
 
 **Table of contents**  
-- [Problem Statement](#Problem Statement)
-- [Data][#Data]
-- [Methodology][#Methodology]
+- [Problem Statement](#problem statement)
+- [Data](#data)
+- [Methodology](#methodology)
 - [Conclusion](#conclusion)
 - [References](#references)
 
