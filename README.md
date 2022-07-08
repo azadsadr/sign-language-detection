@@ -1,15 +1,15 @@
 # Sign Language Detection
 
-**Author:** *Azad Sadr*, *Lorenzo Taroni*, *Thomas Axel Deponte*  
-**Date:** *6 july 2022*
+**Authors:** *Azad Sadr*, *Lorenzo Taroni*, *Thomas Axel Deponte*  
+**Date:** *6 July 2022*
 
 
 
 **Table of contents**  
-- [Problem Statement](#problem statement)
+- [Problem Statement](#problem-statement)
 - [Data](#data)
 - [Methodology](#methodology)
-- [Conclusion](#conclusion)
+- [Results](#results)
 - [References](#references)
 
 
@@ -23,16 +23,18 @@ American Sign Language (ASL) is a complete, natural language that has the same l
 
 ## Data
 
-data are from kaggle website include, 27000 images with $28 \times 18$ resolution in `csv` format.
+Dataset are from Kaggle website include, 27000 images with $28 \times 18$ resolution in `csv` format.
 
 ## Methodology
 
-Here, we are trying to develop a deep learning model to recognize the hand gestures and map them to the english letter.
+Here, we are trying to develop a deep learning model to recognize the hand gestures and map them to the English letter.
 
 * Convolutional Neural Network
 * Bayesian Convolutional Neural Network
 
-## Conclusion
+## Results
+
+
 
 ## References
 <a id="1">https://www.kaggle.com/code/sanikamal/sign-language-detection/notebook</a> 
