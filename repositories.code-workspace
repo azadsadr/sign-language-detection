@@ -1,0 +1,9 @@
+{
+	"folders": [
+		{
+			"name": "SSH FS - freakstation",
+			"uri": "ssh://freakstation/home/thomas/repositories"
+		}
+	],
+	"settings": {}
+}
