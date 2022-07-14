@@ -6,14 +6,40 @@
 
 
 **Table of contents**  
+<<<<<<< HEAD
 - [Problem Statement](#problem-statement)
 - [Data](#data)
 - [Methodology](#methodology)
 - [Results](#results)
 - [References](#references)
+=======
+- [Sign Language Detection](#sign-language-detection)
+  - [Install and run the code](#install-and-run-the-code)
+    - [prepare the environment (miniconda)](#prepare-the-environment-miniconda)
+  - [Problem Statement](#problem-statement)
+  - [Data](#data)
+  - [Methodology](#methodology)
+  - [Conclusion](#conclusion)
+  - [References](#references)
+>>>>>>> 18fdcc928d56da3c5bff7afbc2385058173120c9
 
+## Install and run the code  
+  
+### prepare the environment (miniconda)  
+  
+Assume miniconda is already installed and you already execute `$ conda config --set env_prompt '({name})'`  
 
+```bash
+source ~/miniconda3/bin/activate   # entering in base env
+(miniconda3)$ cd ~/project_repository_folder     # go to the project folder
+(miniconda3)$ conda create --prefix ./env -f environment.txt       # create a new env in a different location
+(miniconda3)$ conda activate ./env               # activate the new env
 
+(env)$ conda install ipykernel                          # install a jupyter python kernel
+(env)$ python -m ipykernel install --user --name 'sld'  # tell to jupyter where the new kernel is located
+(env)$ conda deactivate # exit the local environment
+(miniconda3)$ jupyter kernelspec install PREFIX --sys-prefix   # tell to jupyter where the new kernel is located, the prefix is returned by "python -m ipykernel install ..."  
+```
 
 ## Problem Statement
 
