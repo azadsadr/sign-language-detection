@@ -94,7 +94,7 @@ def train(loader, model, num_epochs, learning_rate, device):
     return model
 
 
-def check_accuracy(loader, model, device):
+def get_accuracy(loader, model, device):
     
     num_correct = 0
     num_total = 0
@@ -116,4 +116,4 @@ def check_accuracy(loader, model, device):
             num_correct += (predictions == labels).sum().item()
             num_total += labels.shape[0]
         
-        print(f'Got {num_correct} / {num_total} with accuracy {float(num_correct)/float(num_total)*100:.2f} %')
+        print(f'Correct: [{num_correct} / {num_total}] with accuracy {float(num_correct)/float(num_total)*100:.2f} %')

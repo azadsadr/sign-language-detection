@@ -58,6 +58,10 @@ Here, we are trying to develop a deep learning model to recognize the hand gestu
 * Convolutional Neural Network
 * Bayesian Convolutional Neural Network
 
+### Convolutional Neural Network
+
+![](images/arch(3).drawio.png)
+
 ## Results
 
 
