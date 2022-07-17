@@ -6,13 +6,11 @@
 
 
 **Table of contents**  
-<<<<<<< HEAD
 - [Problem Statement](#problem-statement)
 - [Data](#data)
 - [Methodology](#methodology)
 - [Results](#results)
 - [References](#references)
-=======
 - [Sign Language Detection](#sign-language-detection)
   - [Install and run the code](#install-and-run-the-code)
     - [prepare the environment (miniconda)](#prepare-the-environment-miniconda)
@@ -21,7 +19,6 @@
   - [Methodology](#methodology)
   - [Conclusion](#conclusion)
   - [References](#references)
->>>>>>> 18fdcc928d56da3c5bff7afbc2385058173120c9
 
 ## Install and run the code  
   
@@ -60,7 +57,7 @@ Here, we are trying to develop a deep learning model to recognize the hand gestu
 
 ### Convolutional Neural Network
 
-![](images/arch(3).drawio.png)
+![](images/arch(3).drawio(1).png)
 
 ## Results
 
