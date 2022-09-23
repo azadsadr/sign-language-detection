@@ -41,3 +41,4 @@ class ToTensor:
     def __call__(self, sample):
         images, labels = sample
         return torch.from_numpy(images), torch.from_numpy(labels).type(torch.LongTensor)
+
