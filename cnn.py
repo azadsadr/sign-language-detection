@@ -29,40 +29,40 @@ class CNN(nn.Module):
             bias            : If set to False, the layer will not learn an additive bias. Default: True
         '''
 
-        self.conv1 = nn.Conv2d(in_channels=1, out_channels=10, kernel_size=(3,3))
-        self.pool1 = nn.MaxPool2d(kernel_size=(2,2))
-
-        self.conv2 = nn.Conv2d(in_channels=10, out_channels=20, kernel_size=(3,3))
-        self.pool2 = nn.MaxPool2d(kernel_size=(2,2))
-
-        self.conv3 = nn.Conv2d(in_channels=20, out_channels=30, kernel_size=(3,3))
-        self.dropout1 = nn.Dropout2d()
-
-        self.fc1 = nn.Linear(30*3*3, 270)
-        self.fc2 = nn.Linear(270, 24)
+        self.conv1 = nn.Conv2d(in_channels=1, out_channels=28, kernel_size=(3,3), stride=1, padding=1)
+        self.conv2 = nn.Conv2d(in_channels=28, out_channels=28, kernel_size=(3,3), stride=1, padding=1)
+        self.pool1 = nn.MaxPool2d(kernel_size=(2,2), stride=2)
+        self.conv3 = nn.Conv2d(in_channels=28, out_channels=56, kernel_size=(3,3), stride=1, padding=1)
+        self.conv4 = nn.Conv2d(in_channels=56, out_channels=56, kernel_size=(3,3), stride=1, padding=1)
+        self.pool2 = nn.MaxPool2d(kernel_size=(2,2), stride=2)
+        #self.dropout1 = nn.Dropout2d()
+        self.fc1 = nn.Linear(56*7*7, 512)
+        self.fc2 = nn.Linear(512, 128)
+        self.fc3 = nn.Linear(128, 24)
 
         #self.softmax = nn.LogSoftmax(dim=1)
 
     def forward(self, x):
         output = self.conv1(x)
         output = F.relu(output)
-        output = self.pool1(output)
-
         output = self.conv2(output)
         output = F.relu(output)
-        output = self.pool2(output)
-
+        output = self.pool1(output)
         output = self.conv3(output)
         output = F.relu(output)
-        output = self.dropout1(output)
+        output = self.conv4(output)
+        output = F.relu(output)
+        output = self.pool2(output)
+        output = output.view(-1, 56*7*7)
+        output = F.relu(self.fc1(output))
+        output = F.relu(self.fc2(output))
+        output = self.fc3(output)
+        #output = self.dropout1(output)
 
         # When we don’t know how many rows or columns you want, 
         # PyTorch can automatically set a value for you when you pass in -1. 
         # In our case, we know our columns will be 30 * 3 * 3, but we don’t know how many rows we want.
-        output = output.view(-1, 30*3*3)
         
-        output = F.relu(self.fc1(output))
-        output = F.relu(self.fc2(output))
         #output = self.softmax(output)
         return output
     
