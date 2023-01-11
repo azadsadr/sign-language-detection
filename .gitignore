@@ -2,4 +2,5 @@ env/
 archive/
 __pycache__/
 TyXe/
-
+images/.ipynb_checkpoints/
+data/
