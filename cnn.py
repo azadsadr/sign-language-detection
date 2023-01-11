@@ -36,7 +36,7 @@ class ConvNN(nn.Module):
         output = output.view(-1, 30*3*3)
         output = F.relu(self.fc1(output))
         output = F.relu(self.fc2(output))
-        output = self.softmax(output)
+        #output = self.softmax(output)
         return output
 
 
