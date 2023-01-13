@@ -1,7 +1,8 @@
 import numpy as np
 import pandas as pd
 import torch
-from torch.utils.data import Dataset 
+from torch.utils.data import Dataset, random_split
+import torchvision
 
 
 class ASLDataset(Dataset):
@@ -67,8 +68,9 @@ class ASLDataset(Dataset):
         return image, label
 
 
-#---------------------------------------------------------------------
 
+'''
+#---------------------------------------------------------------------
 class ToTensor:
     def __call__(self, sample):
         images, labels = sample
@@ -82,3 +84,43 @@ class Normalize:
         std = torch.std(images)
         images = (images - mean) / std
         return images, labels
+#---------------------------------------------------------------------
+'''
+
+
+def make_dataset(train_path, test_path):
+
+    #train_path = r'data/sign_mnist_train.csv'
+    #test_path = r'data/sign_mnist_test.csv'
+
+    images_transforms = torchvision.transforms.Compose([
+        #preprocessing.ToTensor(), 
+        #preprocessing.Normalize(), 
+        torchvision.transforms.ToTensor(), 
+        torchvision.transforms.RandomHorizontalFlip(), 
+        torchvision.transforms.RandomRotation(10), 
+        #torchvision.transforms.Normalize(110, 110), 
+    ])
+
+    labels_transforms = torchvision.transforms.Compose([
+        torchvision.transforms.ToTensor(), 
+    ])
+
+    train_data_full = ASLDataset(
+        csv_file=train_path, 
+        transform=images_transforms, 
+        target_transform=None
+        )
+
+    test_data = ASLDataset(
+        csv_file=test_path, 
+        transform=images_transforms, 
+        target_transform=None
+        )
+
+    val_size = 7455
+    train_size = len(train_data_full) - val_size
+
+    train_data, val_data = random_split(train_data_full, [train_size, val_size])
+
+    return train_data, val_data, test_data
