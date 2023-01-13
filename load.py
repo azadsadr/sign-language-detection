@@ -13,6 +13,7 @@ def CNN():
 
     # load the pretrained model
     net.load_state_dict(torch.load(path))
+    net.eval()
 
     return net
 
