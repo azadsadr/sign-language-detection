@@ -5,22 +5,21 @@ import torchvision.transforms as transforms
 import preprocessing
 
 def preprocess(image_path, verbose=False):
-    image = Image.open(image_path) # Read a PIL image
-    image = ImageOps.grayscale(image)
+    image = Image.open(image_path)      # Read a PIL image
+    image = ImageOps.grayscale(image)   # convert to grayscale
 
     # define a transform to 
     transform = transforms.Compose(
         [
             transforms.ToTensor(), # convert PIL image to  torch tensor
             transforms.Resize(28),
+            transforms.CenterCrop((28, 28)),
+            #transforms.RandomHorizontalFlip(),
+            #transforms.ToTensor(),
+            #transforms.Normalize([0.5],[0.5])
         ]
     )
-
-    #transforms.CenterCrop((28, 28)),
-    #transforms.RandomHorizontalFlip(),
-    #transforms.ToTensor(),
-    #transforms.Normalize([0.5],[0.5])
-
+    
     img_tensor = transform(image)
 
     if verbose:
@@ -29,7 +28,14 @@ def preprocess(image_path, verbose=False):
 
     img_tensor = img_tensor.view([1,1,28,28])
 
-    # print the converted Torch tensor
+    '''
+    return value:
+    type: <class 'torch.Tensor'>
+    shape: torch.Size([1, 1, 28, 28])
+    min value: 0.0
+    max value: 1.0
+    '''
+    
     return img_tensor
 
 
@@ -58,5 +64,16 @@ def from_csv(verbose=False):
         print(f"Label: {labels_map[label.item()]}")
         plt.imshow(img, cmap="gray")
         plt.show()
+
+    '''
+    1st return value:
+    type: <class 'torch.Tensor'>
+    shape: torch.Size([1, 1, 28, 28])
+    min value: 0.0
+    max value: 1.0
+
+    2nd return value:
+    string
+    '''
 
     return img.view(1,1,28,28), labels_map[label.item()]
