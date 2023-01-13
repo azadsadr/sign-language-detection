@@ -125,10 +125,12 @@ def train(train_loader, valid_loader, model, num_epochs, learning_rate, device):
 
             # item() extracts the loss’s value as a Python float. 
             # We then add it to our train_loss (which is zero at the start of every iteration)
-            train_loss += loss.item() * images.size(0)
+            train_loss += loss.item() * images.shape[0]
 
+            '''
             if (batch_idx+1) % 200 == 0:
                 print(f'epoch [{epoch+1}/{num_epochs}], batch [{batch_idx+1}/{n_total_steps}], loss = {loss.item():.4f}')
+            '''
         
         #print("==============================================================")
         # validate the model
@@ -138,18 +140,17 @@ def train(train_loader, valid_loader, model, num_epochs, learning_rate, device):
             labels = labels.to(device=device)
             outputs = model(images)
             loss = criterion(outputs, labels)
-            valid_loss += loss.item() * images.size(0)
+            valid_loss += loss.item() * images.shape[0]
 
         # calculate average losses
-        train_loss = train_loss / len(train_loader.sampler)
-        valid_loss = valid_loss / len(valid_loader.sampler)
-        train_losses.append(train_loss)
-        valid_losses.append(valid_loss)
+        train_loss_avg = train_loss / len(train_loader.sampler)
+        valid_loss_avg = valid_loss / len(valid_loader.sampler)
+        train_losses.append(train_loss_avg)
+        valid_losses.append(valid_loss_avg)
 
         # print-training/validation-statistics
         print('Epoch: {} \tTraining Loss: {:.6f} \tValidation Loss: {:.6f}'.format(
-            epoch, train_loss, valid_loss))
-
+            epoch+1, train_loss_avg, valid_loss_avg))
 
     return model, train_losses, valid_losses
 
