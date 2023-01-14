@@ -1,3 +1,4 @@
 env/
 archive/
-__pycache__/
+__pycache__/*
+test.ipynb

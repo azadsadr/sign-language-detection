@@ -19,11 +19,13 @@ def CNN():
 
 
 def BCNN():
+    
     path = "output/bcnn"
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     net = network.network(in_channels=1, output_size=24, device=device)
 
-    # load the pretrained model
+
+    # load the pretrained model =========================================================
     prior_kwargs = dict() # expose_all=False, hide_module_types=(nn.BatchNorm2d,))
     likelihood = tyxe.likelihoods.Categorical(27455)
     prior = tyxe.priors.IIDPrior(
@@ -38,6 +40,8 @@ def BCNN():
         ) #, train_loc=not scale_only)
     bnn = tyxe.VariationalBNN(net, prior, likelihood, guide)
 
+
+    # load pre-trained model ============================================================
     pyro.clear_param_store()
     bnn.net.load_state_dict(torch.load(os.path.join(path, "state_dict.pt")))
     pyro.get_param_store().load(os.path.join(path, "param_store.pt"), map_location=device)
