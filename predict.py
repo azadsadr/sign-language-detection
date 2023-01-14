@@ -8,7 +8,18 @@ labels_map = {
     18: "T", 19: "U", 20: "V", 21: "W", 22: "X", 23: "Y",
 }
 
-def argmax(prediction):
+
+def cnn_argmax(prediction):
+    pred = prediction.cpu()
+    pred = pred.detach().numpy()        # converts to <class 'numpy.ndarray'>
+    maxIdx = np.argmax(pred, axis=1)    # returns index of the max value
+    score = np.amax(np.exp(pred)/np.sum(np.exp(pred)))  # returns exponentiated normailized max value
+    #score = np.amax(prediction)        # returns max value
+    label = labels_map[maxIdx[0]]       # returns the label
+    return label, score
+
+
+def bcnn_argmax(prediction):
     pred = prediction.cpu()
     pred = pred.detach().numpy()        # converts to <class 'numpy.ndarray'>
     maxIdx = np.argmax(pred, axis=1)    # returns index of the max value
@@ -21,11 +32,11 @@ def argmax(prediction):
 def CNN(image_data):
     cnn = load.CNN()                                # load pre-trained model
     prediction = cnn(image_data)                    # make prediction using input image
-    label, score = argmax(prediction=prediction)    # get the most likely class
+    label, score = cnn_argmax(prediction=prediction)    # get the most likely class
     return label, score
 
-def BCNN(image_data):
-    bcnn = load.BCNN()                                          # load pre-trained model
-    prediction = bcnn.predict(image_data, num_predictions=10)   # make prediction using input image
-    label, score = argmax(prediction)                           # get the most likely class
+def BCNN(image_data, nsamples):
+    bcnn = load.BCNN()                                              # load pre-trained model
+    prediction = bcnn.predict(image_data, num_predictions=nsamples) # make prediction using input image
+    label, score = bcnn_argmax(prediction)                               # get the most likely class
     return label, score
