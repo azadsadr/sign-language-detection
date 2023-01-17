@@ -8,6 +8,9 @@ class CNN(nn.Module):
         super(CNN, self).__init__()
 
         '''
+        ==================================================================================
+        Instruction
+        ==================================================================================
         torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, ... )
             in_channels (int)                       : Number of channels in the input image
             out_channels (int)                      : Number of channels produced by the convolution
